@@ -43,3 +43,10 @@ deploy: network remove-container build
 	-it \
 	-d \
 	$(image)
+
+.PHONY: git-push
+git-push:
+	@for remote in $$(git remote); do \
+		echo "Pushing to $$remote"; \
+        git push $$remote; \
+	done
